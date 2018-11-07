@@ -7,18 +7,16 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.logging.Logger;
 
 /**
  * Created by MochGani on 10/24/17.
  */
 
-public class DatabaseHelper extends SQLiteOpenHelper {
-    private static final String TAG = DatabaseHelper.class.getSimpleName();
+public class DatabaseSQLiteHelper extends SQLiteOpenHelper {
+    private static final String TAG = DatabaseSQLiteHelper.class.getSimpleName();
 
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 23;
     private static final String WORD_LIST_TABLE = "word_entries";
     private static final String DATABASE_NAME = "wordlist";
 
@@ -35,7 +33,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private SQLiteDatabase mWritableDB;
     private SQLiteDatabase mReadableDB;
 
-    public DatabaseHelper(Context context) {
+    public DatabaseSQLiteHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
         Log.d(TAG, "Database Terbuat");
     }
@@ -160,7 +158,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        Log.w(DatabaseHelper.class.getName(),
+        Log.w(DatabaseSQLiteHelper.class.getName(),
                 "Upgrading database from version " + oldVersion + " to "
                         + newVersion + ", which will destroy all old data");
         db.execSQL("DROP TABLE IF EXISTS " + WORD_LIST_TABLE);

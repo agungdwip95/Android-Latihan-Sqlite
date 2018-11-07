@@ -10,7 +10,7 @@ import android.widget.Toast;
 
 public class EditActivity extends AppCompatActivity {
 
-    private DatabaseHelper mDB;
+    private DatabaseSQLiteHelper mDB;
     int id;
     EditText txtWord;
 
@@ -19,7 +19,7 @@ public class EditActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit);
 
-        mDB = new DatabaseHelper(this);
+        mDB = new DatabaseSQLiteHelper(this);
 
         txtWord = (EditText) findViewById(R.id.txtWord);
 

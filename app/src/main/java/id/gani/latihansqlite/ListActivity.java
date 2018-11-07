@@ -2,25 +2,21 @@ package id.gani.latihansqlite;
 
 import android.content.Intent;
 import android.database.Cursor;
-import android.provider.Contacts;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.ContextMenu;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
-import android.widget.SimpleAdapter;
 import android.widget.SimpleCursorAdapter;
 import android.widget.Toast;
 
 public class ListActivity extends AppCompatActivity {
 
-    private DatabaseHelper mDB;
+    private DatabaseSQLiteHelper mDB;
 
     private String[] pilihan_menu = { "Edit Data", "Hapus Data" };
 
@@ -31,7 +27,7 @@ public class ListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list);
 
-        mDB = new DatabaseHelper(this);
+        mDB = new DatabaseSQLiteHelper(this);
         mDB.getWritableDatabase();
 
         idWord = mDB.getDataAll(0);

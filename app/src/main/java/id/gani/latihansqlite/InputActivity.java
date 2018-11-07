@@ -10,14 +10,14 @@ import android.widget.Toast;
 
 public class InputActivity extends AppCompatActivity {
 
-    private DatabaseHelper mDB;
+    private DatabaseSQLiteHelper mDB;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_input);
 
-        mDB = new DatabaseHelper(this);
+        mDB = new DatabaseSQLiteHelper(this);
 
         final EditText txtWord = (EditText) findViewById(R.id.txtWord);
 
