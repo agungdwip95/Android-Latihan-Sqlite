@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
         spnWord.setAdapter(adapter);
 
         TextView txtQuery = (TextView) findViewById(R.id.txtQuery);
-        txtQuery.setText("Hasil Dari Query ID 3 = " + mDB.getDataWhere(3));
+        txtQuery.setText("Hasil Dari Query ID 3 = " + mDB.getDataWhere(3, mDB.KEY_WORD));
 
         Button btnInput = (Button) findViewById(R.id.btnInput);
         btnInput.setOnClickListener(new View.OnClickListener() {
@@ -44,6 +44,15 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(MainActivity.this, ListActivity.class);
+                startActivity(i);
+            }
+        });
+
+        Button btnLogin = (Button) findViewById(R.id.btnLogin);
+        btnLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(MainActivity.this, LoginActivity.class);
                 startActivity(i);
             }
         });

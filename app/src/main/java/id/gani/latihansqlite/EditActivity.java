@@ -12,7 +12,7 @@ public class EditActivity extends AppCompatActivity {
 
     private DatabaseSQLiteHelper mDB;
     int id;
-    EditText txtWord;
+    EditText txtWord, txtKeterangan;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,13 +22,15 @@ public class EditActivity extends AppCompatActivity {
         mDB = new DatabaseSQLiteHelper(this);
 
         txtWord = (EditText) findViewById(R.id.txtWord);
+        txtKeterangan = (EditText) findViewById(R.id.txtKeterangan);
 
         Intent i = getIntent();
         Bundle b = i.getExtras();
 
         if(b!=null){
             id = (Integer) b.get("idWord");
-            txtWord.setText(mDB.getDataWhere(id));
+            txtWord.setText(mDB.getDataWhere(id, mDB.KEY_WORD));
+            txtKeterangan.setText(mDB.getDataWhere(id, mDB.KEY_KET));
         } else {
             id = 0;
         }
@@ -37,7 +39,7 @@ public class EditActivity extends AppCompatActivity {
         btnUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mDB.update(id, txtWord.getText().toString());
+                mDB.update(id, txtWord.getText().toString(), txtKeterangan.getText().toString());
 
                 Toast.makeText(getApplicationContext(),"Data Berhasil di Update!", Toast.LENGTH_LONG).show();
             }

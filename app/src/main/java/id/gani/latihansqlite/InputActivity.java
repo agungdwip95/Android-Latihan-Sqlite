@@ -20,12 +20,13 @@ public class InputActivity extends AppCompatActivity {
         mDB = new DatabaseSQLiteHelper(this);
 
         final EditText txtWord = (EditText) findViewById(R.id.txtWord);
+        final EditText txtKeterangan = (EditText) findViewById(R.id.txtKeterangan);
 
         Button btnInsert = (Button) findViewById(R.id.btnInsert);
         btnInsert.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mDB.insert(txtWord.getText().toString());
+                mDB.insert(txtWord.getText().toString(),txtKeterangan.getText().toString());
 
                 Toast.makeText(getApplicationContext(),"Data Berhasil di Insert!",Toast.LENGTH_LONG).show();
             }
